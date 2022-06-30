@@ -76,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white),
               ),
             ),
-            FormHelper.inputFieldWidget(context, "username", "Username",
+            FormHelper.inputFieldWidget(
+              context, "username", 
+              "Username",
                 (onValidateVal) {
               if (onValidateVal.isEmpty) {
                 return "Username cant be empty";
@@ -102,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 }
                 return null;
               }, (onSaveVal) {
-                username = onSaveVal;
+                password = onSaveVal;
               },
                   borderColor: Colors.white,
                   borderFocusColor: Colors.white,

@@ -122,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
             }
             return null;
           }, (onSaveVal) {
-            username = onSaveVal;
+            email = onSaveVal;
           },
               prefixIcon: Icon(Icons.person),
               borderColor: Colors.white,

@@ -39,4 +39,25 @@ class APIService {
 
     return registerResponseModel(response.body);
   }
+
+    static Future<String> getUserProfile() async {
+      var loginDetails= await SharedService.loginDetails();
+    
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ${loginDetails!.data.token}'
+    };
+
+    var url = Uri.http(Config.apiURL, Config.profileAPI);
+
+    var response = await client.post(url, headers: requestHeaders,);
+
+    if (response.statusCode == 200) {
+      await SharedService.setLoginDetails(loginResponseJson(response.body));
+      return response.body;
+    } else{
+      return "";
+      }
+  }
+
 }
