@@ -33,7 +33,7 @@ class APIService {
       'Content-Type': 'application/json',
     };
 
-    var url = Uri.http(Config.apiURL, Config.loginAPI);
+    var url = Uri.http(Config.apiURL, Config.registerAPI);
 
     var response = await client.post(url, headers: requestHeaders, body: json.encode(model.toJson()));
 

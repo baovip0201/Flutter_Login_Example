@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
         const Padding(
           padding: EdgeInsets.only(left: 20, bottom: 30, top: 50),
           child: Text(
-            "Login",
+            "Register",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
           ),
         ),
@@ -94,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
             }
             return null;
           }, (onSaveVal) {
-            username = onSaveVal;
+            password = onSaveVal;
           },
               borderColor: Colors.white,
               borderFocusColor: Colors.white,
@@ -144,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
               });
 
               RegisterRequestModel model =
-                  RegisterRequestModel(username: username!, password: password!, email: email!);
+                  RegisterRequestModel(username: username, password: password, email: email);
               APIService.register(model).then((response) {
                 setState(() {
                       isAPIcallProcess = false;

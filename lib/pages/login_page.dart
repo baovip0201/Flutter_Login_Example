@@ -76,9 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white),
               ),
             ),
-            FormHelper.inputFieldWidget(
-              context, "username", 
-              "Username",
+            FormHelper.inputFieldWidget(context, "username", "Username",
                 (onValidateVal) {
               if (onValidateVal.isEmpty) {
                 return "Username cant be empty";
@@ -164,13 +162,13 @@ class _LoginPageState extends State<LoginPage> {
                     setState(() {
                       isAPIcallProcess = false;
                     });
-                    
+
                     if (response) {
                       Navigator.pushNamedAndRemoveUntil(
                           context, '/home', (route) => false);
                     } else {
                       FormHelper.showSimpleAlertDialog(context, Config.name,
-                          "Invalid Username/Password", "OK", () {
+                          "Invalid Username/Password !!!", "OK", () {
                         Navigator.pop(context);
                       });
                     }
