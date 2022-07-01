@@ -18,31 +18,34 @@ class APIService {
 
     var url = Uri.http(Config.apiURL, Config.loginAPI);
 
-    var response = await client.post(url, headers: requestHeaders, body: json.encode(model.toJson()));
+    var response = await client.post(url,
+        headers: requestHeaders, body: json.encode(model.toJson()));
 
     if (response.statusCode == 200) {
       await SharedService.setLoginDetails(loginResponseJson(response.body));
       return true;
-    } else{
+    } else {
       return false;
-      }
+    }
   }
 
-  static Future<RegisterResponseModel> register(RegisterRequestModel model) async {
+  static Future<RegisterResponseModel> register(
+      RegisterRequestModel model) async {
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
     };
 
     var url = Uri.http(Config.apiURL, Config.registerAPI);
 
-    var response = await client.post(url, headers: requestHeaders, body: json.encode(model.toJson()));
+    var response = await client.post(url,
+        headers: requestHeaders, body: json.encode(model.toJson()));
 
     return registerResponseModel(response.body);
   }
 
-    static Future<String> getUserProfile() async {
-      var loginDetails= await SharedService.loginDetails();
-    
+  static Future<String> getUserProfile() async {
+    var loginDetails = await SharedService.loginDetails();
+
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
       'Authorization': 'Basic ${loginDetails!.data.token}'
@@ -50,14 +53,16 @@ class APIService {
 
     var url = Uri.http(Config.apiURL, Config.profileAPI);
 
-    var response = await client.post(url, headers: requestHeaders,);
+    var response = await client.post(
+      url,
+      headers: requestHeaders,
+    );
 
     if (response.statusCode == 200) {
       await SharedService.setLoginDetails(loginResponseJson(response.body));
       return response.body;
-    } else{
+    } else {
       return "";
-      }
+    }
   }
-
 }

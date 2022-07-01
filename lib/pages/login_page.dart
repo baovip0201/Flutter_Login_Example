@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: 10),
             ),
             SizedBox(height: 20),
-            Center(
+            const Center(
               child: Text(
                 "OR",
                 style: TextStyle(
